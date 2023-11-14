@@ -27,7 +27,7 @@
           {{ limitedWords(description) }}
         </p>
         <div class="p-3 flex items-center justify-between">
-         <YoutubeButton :href="meal.strYoutube">Youtube</YoutubeButton>        
+          <YoutubeButton :href="meal.strYoutube">Youtube</YoutubeButton>
           <router-link
             :to="{ name: 'MealDetail', params: { id: meal.idMeal } }"
             class="hover:bg-pink-300 px-2 rounded py-2"
@@ -44,7 +44,7 @@ import { computed, onMounted, ref } from "vue";
 import store from "../store";
 import { useRoute } from "vue-router";
 import { limitedWords } from "../../utils/limitedWords";
-import YoutubeButton from "../components/YoutubeButton.vue"
+import YoutubeButton from "../components/YoutubeButton.vue";
 
 const keyword = ref("");
 const description =
@@ -53,15 +53,15 @@ const meals = computed(() => store.state.searchedMeals);
 
 const route = useRoute();
 
+function search() {
+  store.dispatch("search", keyword.value);
+}
+
 onMounted(() => {
   keyword.value = route.params.id;
-  console.log(keyword.value)
+  console.log(keyword.value);
   if (keyword.value) {
     search();
   }
 });
-
-function search() {
-  store.dispatch("search", keyword.value);
-}
 </script>

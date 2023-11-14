@@ -10,12 +10,11 @@
     </div>
 
     <div class="flex items-center gap-1 mr-5">
-      <router-link
-        :to="{ name: 'Search' }"
-        class="px-2 inline-flex items-center font-semibold transition-colors text-gray-400 h-full hover:underline hover:duration-200 rounded-xl"
-      >
+      <div
+        @click="handleModalOFSearchActive"       
+        class="px-2 inline-flex items-center font-semibold transition-colors text-gray-400 h-full hover:underline hover:duration-200 rounded-xl cursor-pointer">
         Search
-      </router-link>
+      </div>
 
       <router-link
         :to="{ name: 'About' }"
@@ -31,4 +30,17 @@
       >
     </div>
   </header>
+
 </template>
+
+<script setup>
+import {ref} from "vue"
+
+const isModalOFSearchActive = ref(false)
+console.log(isModalOFSearchActive.value, "outside")
+
+function handleModalOFSearchActive(){
+  isModalOFSearchActive.value = !isModalOFSearchActive.value
+console.log(isModalOFSearchActive.value, "clicked rn")
+}
+</script>
