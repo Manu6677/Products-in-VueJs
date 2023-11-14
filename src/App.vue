@@ -1,7 +1,7 @@
-<script setup></script>
-
 <template>
-<router-view />
+  <div class="bg-white-50 h-auto">
+    <router-view />
+  </div>
 </template>
 
-<style scoped></style>
+<script setup></script>
