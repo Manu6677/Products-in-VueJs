@@ -110,7 +110,6 @@
 import { ref } from "vue";
 import cardsForSearchedItem from "../views/cardsForSearchedItem.vue";
 import { useRouter } from "vue-router";
-
 import {
   Dialog,
   DialogPanel,
@@ -131,7 +130,7 @@ function toggleModal() {
 
 function check() {
   open.value = false;
-  //  router.push({path: `/cardsForSearchedItem/${searchedMeal.value}`})
+  
   router.push({
     name: "cardsForSearchedItem",
     params: { meal: searchedMeal.value },

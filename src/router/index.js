@@ -3,11 +3,11 @@ import Home from "../views/Home.vue";
 import ProductList from "../views/ProductList.vue";
 import About from "../views/About.vue";
 import ContactUs from "../views/ContactUs.vue";
-import DefaultLayout from "../components/DefaultLayout.vue"
+import DefaultLayout from "../components/DefaultLayout.vue";
 // import Search from "../views/Search.vue"
-import MealDetail from "../views/MealDetail.vue"
-import cardsForSearchedItem from "../views/cardsForSearchedItem.vue"
-import CategoryPage from "../views/CategoryPage.vue"
+import MealDetail from "../views/MealDetail.vue";
+import cardsForSearchedItem from "../views/cardsForSearchedItem.vue";
+import CategoryPage from "../views/CategoryPage.vue";
 
 const routes = [
   {
@@ -58,5 +58,13 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
+// router.beforeEach((to, from, next) => {
+
+//   console.log(to.path);
+//   if (from.path === "/" && to.path === "/about") {
+//     next("/");
+//   }
+// });
 
 export default router;
