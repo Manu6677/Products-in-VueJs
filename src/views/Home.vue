@@ -81,8 +81,7 @@ const homeCardSection = ref();
 
 onMounted(async () => {
   await axiosClient.get("filter.php?i=bread").then(({ data }) => {
-     homeCardSection.value = data.meals;
-    
+     homeCardSection.value = data.meals;    
   });
 });
 

@@ -4,8 +4,10 @@ import ProductList from "../views/ProductList.vue";
 import About from "../views/About.vue";
 import ContactUs from "../views/ContactUs.vue";
 import DefaultLayout from "../components/DefaultLayout.vue"
-import Search from "../views/Search.vue"
+// import Search from "../views/Search.vue"
 import MealDetail from "../views/MealDetail.vue"
+import cardsForSearchedItem from "../views/cardsForSearchedItem.vue"
+import CategoryPage from "../views/CategoryPage.vue"
 
 const routes = [
   {
@@ -17,7 +19,7 @@ const routes = [
         name: "home",
         component: Home,
       },
-      
+
       {
         path: "/letter/:letter",
         name: "Letter",
@@ -37,6 +39,16 @@ const routes = [
         path: "/mealdetail/:id",
         name: "MealDetail",
         component: MealDetail,
+      },
+      {
+        path: "/cardsForSearchedItem/:meal",
+        name: "cardsForSearchedItem",
+        component: cardsForSearchedItem,
+      },
+      {
+        path: "/categorypage",
+        name: "CategoryPage",
+        component: CategoryPage,
       },
     ],
   },
