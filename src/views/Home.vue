@@ -1,8 +1,7 @@
 <template>
   <div class="flex flex-col px-2">
-
-     <!-- <firstSectionOfHomePage/> -->
-     <firstSectionOfHomePage />
+    <!-- <firstSectionOfHomePage/> -->
+    <firstSectionOfHomePage />
 
     <!-- middle section -->
     <div class="flex flex-col items-center justify-center mt-10 py-3">
@@ -45,22 +44,26 @@
           :key="item.idMeal"
           class="w-48 h-60"
         >
-          <div
-            class="flex flex-col w-48 h-56 shadow-sm rounded-md bg-slate-50 hover:scale-105 duration-150"
+          <router-link
+            :to="{ name: 'MealDetail', params: { id: item.idMeal } }"
           >
-            <img
-              :src="item.strMealThumb"
-              alt="NoImg"
-              class="w-full h-full overflow-hidden rounded-xl"
-            />
-            <p class="px-2 py-2">{{ nameOfDish(item.strMeal) }}</p>
+            <div
+              class="flex flex-col w-48 h-56 shadow-sm rounded-md bg-slate-50 hover:scale-105 duration-150 cursor-pointer"
+            >
+              <img
+                :src="item.strMealThumb"
+                alt="NoImg"
+                class="w-full h-full overflow-hidden rounded-xl"
+              />
+              <p class="px-2 py-2">{{ nameOfDish(item.strMeal) }}</p>
 
-            <span class="flex justify-between px-1 py-1">
-              <div>⭐ 4.5</div>
-              <div>🔥150 kcal</div>
-            </span>
-            <div class="pl-3 py-1 mb-2 font-semibold">Rs: 250</div>
-          </div>
+              <span class="flex justify-between px-1 py-1">
+                <div>⭐ 4.5</div>
+                <div>🔥150 kcal</div>
+              </span>
+              <div class="pl-3 py-1 mb-2 font-semibold">Rs: 250</div>
+            </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -68,22 +71,17 @@
 </template>
 
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import axiosClient from "../axiosClient";
 import { nameOfDish } from "../../utils/nameOfDish";
 import MiddleSectionCard from "../components/MiddleSectionCard.vue";
-import {middleCardSection} from "../../utils/middleCardSection"
-import firstSectionOfHomePage from "./../components/firstSectionOfHomePage.vue"
+import { middleCardSection } from "../../utils/middleCardSection";
+import firstSectionOfHomePage from "./../components/firstSectionOfHomePage.vue";
 
-
-const products = ref([]);
-const homeCardSection = ref();
-
+const homeCardSection = ref("");
 onMounted(async () => {
   await axiosClient.get("filter.php?i=bread").then(({ data }) => {
-     homeCardSection.value = data.meals;
-    
+    homeCardSection.value = data.meals;
   });
 });
-
 </script>
